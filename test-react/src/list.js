@@ -45,7 +45,7 @@ elementFilter(elem_argument){
         const elements = this.props.products.map((element, i) =>{
 
             
-            if(this.state.elem_argument == 'all'){
+            if(this.state.elem_argument === 'all'){
                 let elem_id = i
 
                 i = i+1
@@ -68,7 +68,7 @@ elementFilter(elem_argument){
 
 
 
-               if(this.state.elem_argument == 'passive' && element.status=='off'){
+               if(this.state.elem_argument === 'passive' && element.status==='off'){
                 let elem_id = i
 
                 i = i+1
@@ -89,7 +89,7 @@ elementFilter(elem_argument){
                )
                }
 
-               if(this.state.elem_argument == 'active'&& element.status == 'on'){
+               if(this.state.elem_argument === 'active'&& element.status === 'on'){
                 let elem_id = i
 
                 i = i+1

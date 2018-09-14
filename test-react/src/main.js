@@ -8,50 +8,31 @@ class Main extends Component {
 constructor(){
   super();
 
-this.addElement = this.addElement.bind(this);
 
-this.changeStatus = this.changeStatus.bind(this);
-
-this.remove = this.remove.bind(this);
 
 
   
-  this.state = {
+  this.state = {  products : [ ] };
 
-    products : [
+  
  
-     {
-       'name':'pen',
-       'status':'on'
-     },
-    {
-      'name': 'desk',
-      'status':'on'
-    },
-    {
-      'name': 'wall',
-      'status':'on'
-    },
-    {
-      'name': 'window',
-      'status':'on'
-    },
-    {
-      'name': 'door',
-      'status':'on'
-    },
-    {
-      'name': 'ruler',
-      'status':'on'
-    },
-    {
-      'name': 'table',
-      'status':'on'
-    }
-   ]
- };
+   
+  
+
  
+let getOnLocal = localStorage.getItem('save');
+
+if(getOnLocal !== null){
+
+  getOnLocal = JSON.parse(getOnLocal);
+  this.state.products = getOnLocal;
+}
+
  
+
+this.addElement = this.addElement.bind(this);
+this.changeStatus = this.changeStatus.bind(this);
+this.remove = this.remove.bind(this);
 }
 
 
@@ -65,6 +46,7 @@ addElement(val){
 }
 this.setState({refleshProducts});
 
+this.saveOnLocal(refleshProducts)
 
 }
 
@@ -81,6 +63,7 @@ changeStatus(id){
   refleshProducts[id].status = newStatus;
 
   this.setState({refleshProducts})
+  this.saveOnLocal(refleshProducts)
 }
 
 
@@ -92,13 +75,17 @@ remove(id){
   let  refleshProducts = this.state.products;
     refleshProducts.splice(id,1);
     this.setState({refleshProducts});
-    
+    this.saveOnLocal(refleshProducts)
 }
 
 
 
+saveOnLocal(refleshProducts){
 
-
+  var refleshProducts = JSON.stringify(refleshProducts)
+  localStorage.setItem('save',refleshProducts);
+ 
+}
 
 
 
