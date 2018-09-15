@@ -134,3 +134,23 @@
     color: white;
 }
 
+
+
+
+.api-list{
+    list-style: none;
+
+}
+
+.api-list span{
+    display: block;
+}
+
+tr{
+    border: 1px solid;
+}
+
+tr td{
+    border: 1px solid;
+}
+
